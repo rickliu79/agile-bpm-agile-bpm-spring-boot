@@ -12,12 +12,12 @@ import org.springframework.context.annotation.ComponentScan;
  * @date 2018-07-11
  */
 @ComponentScan("com.dstz.*")
-@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @EnableAbMessageQueue(MessageQueueType.REDIS)
 public class SamplesApplication {
-	
+
     public static void main(String[] args) {
         SpringApplication.run(SamplesApplication.class, args);
     }
-    
+
 }

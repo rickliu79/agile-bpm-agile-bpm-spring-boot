@@ -11,6 +11,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class AbRedisMessageQueueConsumerProperties {
 
     /**
+     * redisTemplate 容器中名称
+     */
+    private String redisTemplateBeanName = "redisTemplate";
+
+    /**
      * 处理消息核心线程数
      */
     private int handleMessageCoreThreadSize = 1;
@@ -29,6 +34,14 @@ public class AbRedisMessageQueueConsumerProperties {
      * 监听队列间隔(ms)
      */
     private long listenInterval = 5000;
+
+    public String getRedisTemplateBeanName() {
+        return redisTemplateBeanName;
+    }
+
+    public void setRedisTemplateBeanName(String redisTemplateBeanName) {
+        this.redisTemplateBeanName = redisTemplateBeanName;
+    }
 
     public int getHandleMessageCoreThreadSize() {
         return handleMessageCoreThreadSize;

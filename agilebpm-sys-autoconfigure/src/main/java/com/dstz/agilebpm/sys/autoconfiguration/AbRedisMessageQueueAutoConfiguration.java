@@ -28,6 +28,7 @@ public class AbRedisMessageQueueAutoConfiguration {
     @Bean
     public RedisMessageQueueConsumer redisMessageQueueConsumer(AbRedisMessageQueueConsumerProperties properties) {
         RedisMessageQueueConsumer redisMessageQueueConsumer = new RedisMessageQueueConsumer();
+        redisMessageQueueConsumer.setRedisTemplateBeanName(properties.getRedisTemplateBeanName());
         redisMessageQueueConsumer.setHandleMessageCoreThreadSize(properties.getHandleMessageCoreThreadSize());
         redisMessageQueueConsumer.setHandleMessageMaxThreadSize(properties.getHandleMessageMaxThreadSize());
         redisMessageQueueConsumer.setHandleMessageKeepAliveTime(properties.getHandleMessageKeepAliveTime());
