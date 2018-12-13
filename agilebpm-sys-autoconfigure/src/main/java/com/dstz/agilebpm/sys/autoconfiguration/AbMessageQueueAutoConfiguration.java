@@ -1,13 +1,16 @@
 package com.dstz.agilebpm.sys.autoconfiguration;
 
+import com.dstz.sys.api.jms.constants.JmsDestinationConstant;
 import com.dstz.sys.api.jms.producer.JmsProducer;
 import com.dstz.sys.simplemq.consumer.CommonMessageQueueConsumer;
 import com.dstz.sys.simplemq.producer.CommonMessageQueueProducer;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.listener.DefaultMessageListenerContainer;
+import org.springframework.jms.listener.adapter.MessageListenerAdapter;
+
+import javax.jms.ConnectionFactory;
 
 /**
  * 通用消息队列自动装配
@@ -15,7 +18,6 @@ import org.springframework.jms.annotation.EnableJms;
  * @author wacxhs
  */
 @EnableJms
-@Configuration
 public class AbMessageQueueAutoConfiguration {
 
     @Bean
@@ -31,11 +33,20 @@ public class AbMessageQueueAutoConfiguration {
     }
 
     @Bean
-    public MessageListenerAdapter commonMessageQueueConsumerListenerAdapter(@Autowired CommonMessageQueueConsumer messageQueueConsumer) {
+    public MessageListenerAdapter commonMessageQueueConsumerListenerAdapter(CommonMessageQueueConsumer messageQueueConsumer) {
         MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter();
         messageListenerAdapter.setDelegate(messageQueueConsumer);
-        messageListenerAdapter.setDefaultListenerMethod("handleMessage");
         return messageListenerAdapter;
+    }
+
+    @Bean
+    public DefaultMessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory,
+                                                                    @Qualifier("commonMessageQueueConsumerListenerAdapter") MessageListenerAdapter messageListenerAdapter) {
+        DefaultMessageListenerContainer messageListenerContainer = new DefaultMessageListenerContainer();
+        messageListenerContainer.setDestinationName(JmsDestinationConstant.DEFAULT_NAME);
+        messageListenerContainer.setMessageListener(messageListenerAdapter);
+        messageListenerContainer.setConnectionFactory(connectionFactory);
+        return messageListenerContainer;
     }
 
 

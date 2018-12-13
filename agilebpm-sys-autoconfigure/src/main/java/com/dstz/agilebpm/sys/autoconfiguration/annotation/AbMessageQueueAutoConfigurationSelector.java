@@ -2,7 +2,6 @@ package com.dstz.agilebpm.sys.autoconfiguration.annotation;
 
 import com.dstz.agilebpm.sys.autoconfiguration.AbMessageQueueAutoConfiguration;
 import com.dstz.agilebpm.sys.autoconfiguration.AbRedisMessageQueueAutoConfiguration;
-import com.dstz.agilebpm.sys.autoconfiguration.AbRedisMessageQueueConsumerProperties;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
 

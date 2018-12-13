@@ -6,7 +6,6 @@ import com.dstz.sys.simplemq.producer.RedisMessageQueueProducer;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
 
 /**
@@ -15,7 +14,6 @@ import org.springframework.data.redis.core.RedisTemplate;
  * @author wacxhs
  */
 @ConditionalOnClass(RedisTemplate.class)
-@Configuration
 @EnableConfigurationProperties(AbRedisMessageQueueConsumerProperties.class)
 public class AbRedisMessageQueueAutoConfiguration {
 
