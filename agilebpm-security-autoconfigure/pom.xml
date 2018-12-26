@@ -24,8 +24,18 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.dstz.agilebpm</groupId>
             <artifactId>http-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.dstz.agilebpm</groupId>
+            <artifactId>ab-security-jwt</artifactId>
         </dependency>
 
     </dependencies>
