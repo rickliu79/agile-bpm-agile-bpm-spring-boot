@@ -1,7 +1,7 @@
 package com.dstz.agilebpm.security.autoconfiguration.annotation;
 
 import com.dstz.agilebpm.security.autoconfiguration.AbWebHttpSecurityConfiguration;
-import com.dstz.agilebpm.security.autoconfiguration.AbWebJwtSecutiryConfiguration;
+import com.dstz.agilebpm.security.autoconfiguration.AbWebJwtSecurityConfiguration;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * ab web安全配置选择器
- *t
+ *
  * @author wacxhs
  */
 public class AbWebSecurityConfigurationSelector implements ImportSelector {
@@ -21,7 +21,7 @@ public class AbWebSecurityConfigurationSelector implements ImportSelector {
         if (AbWebSecuritySelector.HTTP.equals(abWebSecuritySelector)) {
             return new String[]{AbWebHttpSecurityConfiguration.class.getName()};
         } else if (AbWebSecuritySelector.JWT.equals(abWebSecuritySelector)) {
-            return new String[]{AbWebJwtSecutiryConfiguration.class.getName()};
+            return new String[]{AbWebJwtSecurityConfiguration.class.getName()};
         }
         return new String[0];
     }
