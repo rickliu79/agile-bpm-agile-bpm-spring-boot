@@ -26,7 +26,7 @@ import java.util.Locale;
  *
  * @author wacxhs
  */
-@EnableConfigurationProperties({AbSecurityProperties.class})
+//@EnableConfigurationProperties({AbSecurityProperties.class})
 public class AbWebJwtSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private AbSecurityProperties abSecurityProperties;

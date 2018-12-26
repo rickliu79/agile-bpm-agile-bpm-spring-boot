@@ -14,7 +14,7 @@ spring:
 
 logging:
   level:
-    root: info
+    root: debug
 
 server:
   context-path: /
@@ -24,6 +24,8 @@ server:
 ## /swagger-*,/v2/api-docs*,   swagger 免登陆
 
 ab:
+  jwt:
+    enabled:true
   security:
     auth-ingores: /login.*,/agilebpm-ui*,/index.html,/swagger-*,/v2/api-docs*,
   redis:

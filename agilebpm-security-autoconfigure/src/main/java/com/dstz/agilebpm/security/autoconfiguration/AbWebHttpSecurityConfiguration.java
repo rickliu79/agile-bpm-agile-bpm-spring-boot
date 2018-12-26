@@ -10,6 +10,7 @@ import com.dstz.security.filter.RequestThreadFilter;
 import com.dstz.security.filter.XssFilter;
 import com.dstz.security.forbidden.DefaultAccessDeniedHandler;
 import com.dstz.security.forbidden.DefualtAuthenticationEntryPoint;
+import com.dstz.security.jwt.service.JWTService;
 import com.dstz.security.login.CustomPwdEncoder;
 import com.dstz.security.login.context.LoginContext;
 import com.dstz.security.login.logout.DefualtLogoutSuccessHandler;
@@ -26,6 +27,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.csrf.CsrfFilter;
 
 import javax.annotation.Resource;
@@ -133,13 +135,28 @@ public class AbWebHttpSecurityConfiguration extends WebSecurityConfigurerAdapter
 
         http.addFilterBefore(new RequestThreadFilter(), CsrfFilter.class);
         http.addFilterBefore(new EncodingFilter(), CsrfFilter.class);
-
+        http.addFilterBefore(JWTAuthenticationFilter(), LogoutFilter.class);
+        
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandler());
 
         http.headers().frameOptions().disable();
         http.csrf().disable();
     }
+    
+   // <bean id="jwtAuthenticationFilter" class="com.dstz.security.authentication.JWTAuthenticationFilter"/>
 
+    @Bean("abJWTAuthenticationFilter")
+    protected com.dstz.security.authentication.JWTAuthenticationFilter JWTAuthenticationFilter() {
+    	com.dstz.security.authentication.JWTAuthenticationFilter abJWTAuthenticationFilter = new com.dstz.security.authentication.JWTAuthenticationFilter();
+        return abJWTAuthenticationFilter;
+    }
+    
+    @Bean("abJWTService")
+    protected JWTService abJWTService() {
+    	JWTService jWTService = new JWTService();
+        return jWTService;
+    }
+    
     /**
      * 访问决策器
      ***/

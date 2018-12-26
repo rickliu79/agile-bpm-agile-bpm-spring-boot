@@ -30,12 +30,7 @@
 
         <dependency>
             <groupId>com.dstz.agilebpm</groupId>
-            <artifactId>http-security</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.dstz.agilebpm</groupId>
-            <artifactId>ab-security-jwt</artifactId>
+            <artifactId>ab-spring-security</artifactId>
         </dependency>
 
     </dependencies>
