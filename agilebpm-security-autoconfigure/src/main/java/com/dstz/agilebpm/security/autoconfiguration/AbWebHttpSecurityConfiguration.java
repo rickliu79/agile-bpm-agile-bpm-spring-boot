@@ -12,6 +12,7 @@ import com.dstz.security.forbidden.DefaultAccessDeniedHandler;
 import com.dstz.security.forbidden.DefualtAuthenticationEntryPoint;
 import com.dstz.security.jwt.service.JWTService;
 import com.dstz.security.login.CustomPwdEncoder;
+import com.dstz.security.login.UserDetailsServiceImpl;
 import com.dstz.security.login.context.LoginContext;
 import com.dstz.security.login.logout.DefualtLogoutSuccessHandler;
 import com.dstz.sys.util.ContextUtil;
@@ -19,6 +20,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -29,11 +31,13 @@ import org.springframework.security.web.access.intercept.FilterInvocationSecurit
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * 鉴权配置
@@ -41,6 +45,7 @@ import java.util.List;
  * @author jeff
  */
 @EnableConfigurationProperties({AbSecurityProperties.class})
+@Configuration
 public class AbWebHttpSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -143,7 +148,6 @@ public class AbWebHttpSecurityConfiguration extends WebSecurityConfigurerAdapter
         http.csrf().disable();
     }
     
-   // <bean id="jwtAuthenticationFilter" class="com.dstz.security.authentication.JWTAuthenticationFilter"/>
 
     @Bean("abJWTAuthenticationFilter")
     protected com.dstz.security.authentication.JWTAuthenticationFilter JWTAuthenticationFilter() {
@@ -183,13 +187,16 @@ public class AbWebHttpSecurityConfiguration extends WebSecurityConfigurerAdapter
 
 
     CustomPwdEncoder customPwdEncoder = new CustomPwdEncoder();
-    @Resource(name = "userDetailsService")
-    UserDetailsService userDetailsService;
 
+    @Bean("userDetailsService")
+    public UserDetailsService userDetailsService() {
+    	UserDetailsService userDetailsService = new UserDetailsServiceImpl();
+        return userDetailsService;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(customPwdEncoder);
+        auth.userDetailsService(userDetailsService()).passwordEncoder(customPwdEncoder);
     }
 
     @Bean("authenticationManager")
@@ -212,6 +219,13 @@ public class AbWebHttpSecurityConfiguration extends WebSecurityConfigurerAdapter
         intercept.setSecurityMetadataSource(securityMetadataSource());
 
         return intercept;
+    }
+    
+    @Bean("localeResolver")
+    public CookieLocaleResolver cookieLocaleResolver() {
+        CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
+        cookieLocaleResolver.setDefaultLocale(Locale.CHINA);
+        return cookieLocaleResolver;
     }
 
 }

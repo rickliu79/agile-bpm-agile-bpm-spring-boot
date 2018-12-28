@@ -8,6 +8,7 @@ bpmModel.factory('bpmService', ['$rootScope','baseService','ArrayToolService', f
 	//存在任务则说明为处理流程任务
 	var taskId ="";
 	var bpmTask = null;
+	var flowKey = null;
 	var bpmService = {};
 	/**
 	 * 初始化流程数据
@@ -17,16 +18,18 @@ bpmModel.factory('bpmService', ['$rootScope','baseService','ArrayToolService', f
 		defId = param.defId;
 		instanceId = param.instanceId;
 		taskId = param.taskId;
+		flowKey = param.defKey;
 		
 		var dataUrl =__ctx + "/bpm/task/getTaskData?taskId=" + taskId;
 		if(!taskId){
-			dataUrl = __ctx + "/bpm/instance/getInstanceData?defId="+defId+"&instanceId="+instanceId+"&readonly="+param.readonly;
+			dataUrl = __ctx + "/bpm/instance/getInstanceData?defId="+defId+"&flowKey="+flowKey+"&instanceId="+instanceId+"&readonly="+param.readonly;
 		}
 		
 		var defer=baseService.get(dataUrl);
 		
 		$.getResultData(defer,function(data){
 			bpmTask = data.task;
+			if(data.defId){defId = data.defId};
 			scope.$emit('data:loaded',data)
 			jQuery.extend(scope, data);
 		},"alert");
@@ -150,7 +153,6 @@ bpmModel.factory('bpmService', ['$rootScope','baseService','ArrayToolService', f
 					layer.close(ii);
 					return;
 				}
-				
 				var flowData = {
 						defId: bpmService.getDefId(),
 						taskId: bpmService.getTaskId(),
@@ -214,9 +216,9 @@ bpmModel.factory('bpmService', ['$rootScope','baseService','ArrayToolService', f
 					<div ng-if="button.alias==\'start\'" 		buttonAlias="{{button.alias}}"   	ng-click="buttonClick(true)" 			class="btn btn-success fa fa-send">{{button.name}}</div>\
 					<div ng-if="button.alias==\'draft\'" 		buttonAlias="{{button.alias}}"   	ng-click="buttonClick(false)" 			class="btn btn-primary fa fa-clipboard">保存草稿</div>\
 					<div ng-if="button.alias==\'save\'" 		buttonAlias="{{button.alias}}"   	ng-click="buttonClick(false)" 			class="btn btn-primary fa fa-clipboard">保存</div>\
-					<div ng-if="button.alias==\'agree\'" 		buttonAlias="{{button.alias}}"   	ng-click="buttonClick(true,398,690)" 	class="btn btn-success fa fa-check-square-o">{{button.name}}</div>\
-					<div ng-if="button.alias==\'oppose\'" 		buttonAlias="{{button.alias}}"   	ng-click="buttonClick(true,398,690)" 	class="btn btn-primary fa fa-close">{{button.name}}</div>\
-					<div ng-if="button.alias==\'reject\'" 		buttonAlias="{{button.alias}}"   	ng-click="buttonClick(false,398,690)" 	class="btn btn-danger fa fa-lastfm">{{button.name}}</div>\
+					<div ng-if="button.alias==\'agree\'" 		buttonAlias="{{button.alias}}"   	ng-click="buttonClick(true,422,690)" 	class="btn btn-success fa fa-check-square-o">{{button.name}}</div>\
+					<div ng-if="button.alias==\'oppose\'" 		buttonAlias="{{button.alias}}"   	ng-click="buttonClick(true,422,690)" 	class="btn btn-primary fa fa-close">{{button.name}}</div>\
+					<div ng-if="button.alias==\'reject\'" 		buttonAlias="{{button.alias}}"   	ng-click="buttonClick(false,422,690)" 	class="btn btn-danger fa fa-lastfm">{{button.name}}</div>\
 					<div ng-if="button.alias==\'reject2Start\'" buttonAlias="{{button.alias}}"   	ng-click="buttonClick(false,300,500)" 	class="btn btn-danger fa fa-lastfm">{{button.name}}</div>\
 					<div ng-if="button.alias==\'lock\'" 		buttonAlias="{{button.alias}}"   	ng-click="buttonClick(false)" 			class="btn btn-primary fa fa-lock">锁定</div>\
 					<div ng-if="button.alias==\'unlock\'" 		buttonAlias="{{button.alias}}"   	ng-click="buttonClick(false)" 			class="btn btn-primary fa fa-unlock">解锁</div>\

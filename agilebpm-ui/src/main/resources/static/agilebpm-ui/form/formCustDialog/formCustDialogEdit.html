@@ -2,13 +2,14 @@
 <html ng-app="app">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="../../build/common/ngEdit.css" rel="stylesheet">
+<link href="../../build/common/base.css" rel="stylesheet">
+<script type="text/javascript" src="../../build/common/base.js"></script>
 <script type="text/javascript" src="../../build/common/ngEdit.js"></script>
 <script type="text/javascript" src="../../assets/js/platform/form/formCustDialog/formCustDialogEditController.js"></script>
 </head>
 <body ng-controller="ctrl" ng-init="init()">
 	<div class="ibox-title">
-		<a href="javascript:void(0)" class="btn btn-primary fa-save" ng-model="data" ab-save="/form/formCustDialog/save">保存</a>
+		<a href="javascript:void(0)" class="btn btn-primary fa-save" ng-model="data" ab-save="/form/formCustDialog/save" use-default-after-save-event="true">保存</a>
 		<a href="javascript:void(0)" class="btn btn-primary fa-reply" onclick="javascript:$.Dialog.close(window);">取消</a>
 		<a href="javascript:void(0)" ng-show="data.objName" ng-click="openSettingDialog()" class="btn btn-primary fa fa-edit">设置字段参数</a>
 	</div>

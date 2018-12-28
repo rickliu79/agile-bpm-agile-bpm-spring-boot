@@ -11,8 +11,14 @@ app.controller("indexCtrl",['$scope','baseService',function(scope,baseService){
 					$.Toast.error(result.msg);
 				}
 				
-				scope.userMsg = result.data;
-				scope.userRes = scope.userMsg.resourceList;
+				scope.userMsg = FastJson.format(result).data;
+				scope.userRes = scope.userMsg.userMenuList;
+				//将权限放到缓存中
+				if(window.localStorage){
+					window.localStorage.buttonPermision =  scope.userMsg.buttonPermision;
+					console.info(window.localStorage.buttonPermision);
+				}
+				
 				var menuId = $.getCookie("default_menu");
 				var currentMenu=null ;
 				//获取cookie中的当前菜单
@@ -122,12 +128,26 @@ app.controller("indexCtrl",['$scope','baseService',function(scope,baseService){
 		return "";
 	}
 	
-	scope.logout = function(){
+	scope.changeCurrentSystem = function(systemId){
+		var get = baseService.get(__ctx+"/userResource/changeSystem?systemId="+systemId);
+		$.getResultData(get,function(){
+			window.location = "index.html";
+		})
+	}
+	scope.changeCurrentOrg = function(orgId){
+		var get = baseService.get(__ctx+"/userResource/changeOrg?orgId="+orgId);
+		$.getResultData(get,function(){
+			window.location = "index.html";
+		})
+	}
+	
+	scope.logout = function(systemId){
 		var get = baseService.get(__ctx+"/logout");
 		$.getResultData(get,function(){
 			window.location = "login.html";
 		})
 	}
+	
 	scope.closeAll = function(){
 		scope.openedMenu = [{id:"indexpage",active:"active",name:"首页",noclose:true,url:"sys/workbenchPanel/myWorkbench.html"}]; 
 	}
@@ -171,6 +191,37 @@ app.controller("indexCtrl",['$scope','baseService',function(scope,baseService){
 	window.setTimeout(function(){
 		$("#indexpageiframe").attr("src", "sys/workbenchPanel/myWorkbench.html");
 	},10)
+	
+	scope.userInfo = function (){
+		var tab = {
+			id:"userInfo",
+			name:"个人信息",
+			defaultUrl: 'org/user/userDetail.html?id='+scope.userMsg.user.id,
+			icon: 'fa-user',
+			closable:true
+		};
+		scope.menuClick(tab);
+	}
+	scope.editPassworld = function(){
+		var tab = {
+			id:"editPassworld",
+			name:"修改个人密码",
+			defaultUrl: 'org/user/userPasswordEdit.html?id='+scope.userMsg.user.id,
+			icon: 'fa-key',
+			closable:true
+		};
+		scope.menuClick(tab);
+	}
+	scope.editUserInfo = function(){
+		var tab = {
+				id:"editUserInfo",
+				name:"个人信息编辑",
+				defaultUrl: 'org/user/userEditInformation.html?id='+scope.userMsg.user.id,
+				icon: 'fa-info',
+				closable:true
+			};
+		scope.menuClick(tab);
+	}
 }])
 var onlyOpenTitle = "首页";
 //当这个窗口出现在iframe里，表示其目前已经timeout，需要把外面的框架窗口也重定向登录页面
@@ -193,35 +244,6 @@ window.addTab = function(tab,fullTab){
 	}
 }
 
-
-
-window.userInfo = function (){
-	addTab({
-		id:"userInfo",
-		name:"个人信息",
-		defaultUrl: '/org/user/userGet?id='+currentUserId,
-		icon: 'fa-user',
-		closable:true
-	});
-}
-function editPassworld(){
-	addTab({
-		id:"editPassworld",
-		name:"修改个人密码",
-		defaultUrl: '/org/user/userPswEdit',
-		icon: 'fa-key',
-		closable:true
-	});
-}
-window.editUserInfo = function(){
-	addTab({
-		id:"editUserInfo",
-		name:"个人信息编辑",
-		defaultUrl: '/org/user/userInfoEdit',
-		icon: 'fa-info',
-		closable:true
-	});
-}
 
 function calSumWidth(elements) {
     var width = 0;
