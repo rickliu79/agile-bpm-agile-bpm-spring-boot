@@ -40,7 +40,7 @@
 
         <dependency>
             <groupId>com.dstz.agilebpm</groupId>
-            <artifactId>org-rest</artifactId>
+            <artifactId>ab-org-core</artifactId>
         </dependency>
 
         <dependency>
