@@ -1,6 +1,7 @@
 package com.dstz.agilebpm.base.autoconfiguration;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.dstz.base.api.context.ICurrentContext;
 import com.dstz.base.dao.baseinterceptor.QueryInterceptor;
 import com.dstz.base.dao.baseinterceptor.SaveInterceptor;
 import com.dstz.base.db.datasource.DynamicDataSource;
@@ -12,6 +13,7 @@ import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
@@ -69,11 +71,12 @@ public class DataSourceAutoConfiguration {
         pageInterceptor.setProperties(properties);
         return pageInterceptor;
     }
-
+    @Bean
     public QueryInterceptor queryInterceptor() {
         return new QueryInterceptor();
     }
 
+    @Bean
     public SaveInterceptor saveInterceptor() {
         return new SaveInterceptor();
     }
@@ -81,14 +84,14 @@ public class DataSourceAutoConfiguration {
     
     // MapperLocations TODO 可配置
     @Bean(name = "abSqlSessionFactory")
-    public SqlSessionFactoryBean sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource) {
+    public SqlSessionFactoryBean sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource,SaveInterceptor saveInterceptor) {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         sqlSessionFactoryBean.setMapperLocations(resolveMapperLocations("classpath*:com/dstz/*/mapping/*.xml", "classpath*:com/dstz/*/*/mapping/*.xml"));
         sqlSessionFactoryBean.setPlugins(new Interceptor[]{
                 pageInterceptor(),
                 queryInterceptor(),
-                saveInterceptor()
+                saveInterceptor
         });
         
         // 设置多环境的配置
