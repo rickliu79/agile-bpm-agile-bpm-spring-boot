@@ -35,10 +35,6 @@ https://gitee.com/agile-bpm/agilebpm-base-spring-boot.git
 
 - 访问 http://localhost:8080 即可体验 AgileBPM ！
 
-
-## 备注
-![输入图片说明](https://images.gitee.com/uploads/images/2018/1226/102058_699d1fc8_1861740.png "屏幕截图.png")
-
 #### 参与贡献
 
 1. Fork 本项目
