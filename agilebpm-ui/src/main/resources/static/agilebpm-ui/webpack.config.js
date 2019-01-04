@@ -24,7 +24,7 @@ module.exports = {
 
 	    ]
 	} ,
-	devtool: 'eval-source-map',// 开发环境配置。其他环境请设置为false  
+	devtool: false,//'eval-source-map',// 开发环境配置。其他环境请设置为false  
 	plugins:[
           new webpack.optimize.UglifyJsPlugin({
         	  exclude:/\.min\.js$/,
