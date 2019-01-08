@@ -35,6 +35,9 @@ https://gitee.com/agile-bpm/agilebpm-base-spring-boot.git
 
 - 访问 http://localhost:8080 即可体验 AgileBPM ！
 
+
+###### 修改数据库链接 application.yml（使用主工程建表语句，创建数据库 https://gitee.com/agile-bpm/agile-bpm-basic/tree/master/_doc）
+
 #### 参与贡献
 
 1. Fork 本项目
