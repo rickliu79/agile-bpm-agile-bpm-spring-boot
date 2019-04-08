@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Activiti Modeler component part of the Activiti project
  * Copyright 2005-2014 Alfresco Software, Ltd. All rights reserved.
  * 
@@ -23,7 +23,24 @@ var ACTIVITI = ACTIVITI || {};
 ACTIVITI.CONFIG = {
 	'contextRoot' : '',
 };
+var __ctx = '';
 
-window.__ctx = "";
 
-//var __ctx = '/agile-bpm-platform';
+// 跨域时修改 此 ctx http://localhost:8080
+
+
+window.getCtxUrl = function(url,replaceRequestParam){
+	if(url && !url.startWith(__ctx) && !url.startWith("http")){
+		url.startWith("/")?"":url = "/"+url;
+		url = __ctx + url;
+		/*//如果URL含?且需要替换页面请求参数，则进行格式化
+		if(replaceRequestParam && url.indexOf("?")!=-1){
+			url = url.format(jQuery.getParams());
+		}*/
+	}
+	return url;
+}
+//设计器跨域
+jQuery(function () {  //, headers: { 'x-requested-with': 'XMLHttpRequest' }
+	jQuery.ajaxSetup({crossDomain: true, xhrFields: {withCredentials: true}});
+});

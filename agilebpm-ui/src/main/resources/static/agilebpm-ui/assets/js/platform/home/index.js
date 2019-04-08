@@ -1,7 +1,7 @@
 var app = angular.module('app',['base']);
 app.controller("indexCtrl",['$scope','baseService',function(scope,baseService){
 	scope.getUserMsg = function(){
-		var denfer = baseService.post(__ctx+"/userResource/userMsg",{});
+		var denfer = baseService.post(__ctx+"/org/userResource/userMsg",{});
 		denfer.then(
 			function(result){
 				if(!result.isOk && result.code==="401"){
@@ -127,21 +127,21 @@ app.controller("indexCtrl",['$scope','baseService',function(scope,baseService){
 		return "";
 	}
 	
-	scope.changeCurrentSystem = function(systemId){
-		var get = baseService.get(__ctx+"/userResource/changeSystem?systemId="+systemId);
+	scope.changeCurrentSystem = function(systemAlias){
+		var get = baseService.get(__ctx+"/org/userResource/changeSystem?systemAlias="+systemAlias);
 		$.getResultData(get,function(){
 			window.location = "index.html";
 		})
 	}
 	scope.changeCurrentOrg = function(orgId){
-		var get = baseService.get(__ctx+"/userResource/changeOrg?orgId="+orgId);
+		var get = baseService.get(__ctx+"/org/userResource/changeOrg?orgId="+orgId);
 		$.getResultData(get,function(){
 			window.location = "index.html";
 		})
 	}
 	
 	scope.logout = function(systemId){
-		var get = baseService.get(__ctx+"/logout");
+		var get = baseService.get(__ctx+"/org/logout");
 		$.getResultData(get,function(){
 			window.location = "login.html";
 		})

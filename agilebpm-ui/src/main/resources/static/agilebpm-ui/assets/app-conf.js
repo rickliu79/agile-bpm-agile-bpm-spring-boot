@@ -1,4 +1,5 @@
 window.__ctx = "";
+window.__ctx_mb = "http://localhost:8081";//移动端地址
 
 ////跨域时修改 此 ctx 
 //window.__ctx = "http://localhost:8080/agile-bpm-platform";
@@ -34,7 +35,7 @@ window.getProjectUrl = function(url){
 		 var pathname =window.document.location.pathname;
 		 var projectPath = pathname.substring(0,pathname.substr(1).indexOf('/')+1);
 		 // 特殊处理下流程设计器
-		 if("/bus,/bpm,/sys,/org,/form,/flow-editor".indexOf(projectPath)!= -1){
+		 if("/bus,/bpm,/sys,/org,/form,/flow-editor,/bpmplugin".indexOf(projectPath)!= -1){
 			 return url;
 		 }
 		if(url.startWith(projectPath)){

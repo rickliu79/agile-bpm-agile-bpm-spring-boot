@@ -37,6 +37,8 @@ require('../../js/plugins/ztree/ztreeCreator.js');
 require('../../css/plugins/bootstrap-table/bootstrap-table.min.css');
 require('../../css/extends/list.css');
 
+require('../../js/plugins/fastjson/FastJson-1.0.min.js');
+require('../../js/common/tools/toolsControllerUtil.js');
 
 
 
