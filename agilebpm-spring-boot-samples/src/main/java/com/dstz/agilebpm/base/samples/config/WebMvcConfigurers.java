@@ -1,18 +1,17 @@
 package com.dstz.agilebpm.base.samples.config;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * spring mvc 相关的配置
