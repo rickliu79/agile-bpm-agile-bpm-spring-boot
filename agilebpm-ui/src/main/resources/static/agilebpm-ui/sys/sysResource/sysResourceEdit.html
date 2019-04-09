@@ -35,11 +35,11 @@
 </head>
 <body ng-controller="ctrl" class="panel success">
 	<div class="panel-heading">
-		<a class="btn btn-sm btn-primary fa-save" ng-model="data" ab-save="/sys/sysResource/save">
+		<a class="btn btn-sm btn-primary fa-save" ng-model="data" ab-save="/org/sysResource/save">
 			<span>保存</span>
 		</a>
 	</div>
-	<form name="form" method="post" ab-load="/sys/sysResource/getJson?id={id}&systemId={systemId}&parentId={parentId}" ng-model="data">
+	<form name="form" method="post" ab-load="/org/sysResource/getJson?id={id}&systemId={systemId}&parentId={parentId}" ng-model="data">
 		<table class="form-table" cellspacing="0">
 			<tr>
 				<th>资源名:</th>
