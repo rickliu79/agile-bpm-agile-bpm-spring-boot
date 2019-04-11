@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.dstz</groupId>
         <artifactId>agilebpm-spring-boot</artifactId>
-        <version>1.0.1-fxt-SNAPSHOT</version>
+        <version>1.2.0-Beta</version>
 
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -16,7 +16,7 @@
         <dependency>
             <groupId>com.dstz</groupId>
             <artifactId>agilebpm-base-autoconfigure</artifactId>
-            <version>1.0.1-fxt-SNAPSHOT</version>
+            <version>1.2.0-Beta</version>
         </dependency>
     </dependencies>
 </project>
