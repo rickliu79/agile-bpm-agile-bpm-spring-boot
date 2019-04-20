@@ -7,6 +7,7 @@ app.controller('ctrl', [ '$scope', 'baseService', 'ArrayToolService', '$filter',
 		"pc" : '../../assets/js/plugins/ueditor/themes/pcframe.css',
 		"vue" : '../../assets/js/plugins/ueditor/themes/pcframe.css',
 		"mobile" : '../../assets/js/plugins/ueditor/themes/mobileFormIframe.css',
+		"pc_iview" : '../../assets/iview/css/iview.css',
 	};
 
 	$scope.init = function() {
@@ -44,7 +45,8 @@ app.controller('ctrl', [ '$scope', 'baseService', 'ArrayToolService', '$filter',
 		var previewUrlMap = {
 			"pc" : 'formDefPreview.html',
 			"vue" : 'vueFormDefPreview.html',
-			"mobile" : __ctx_mb + '/#/bpm/preview',
+			"pc_iview" : window.opener.top.__ctx_pc_iview + '/bpm/form/preview',
+			"mobile" : window.opener.__ctx_mb + '/#/bpm/preview',
 		};
 
 		if (!previewUrlMap[formType]) {

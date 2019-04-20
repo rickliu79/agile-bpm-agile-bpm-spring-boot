@@ -7,6 +7,8 @@
 <script type="text/javascript" src="../../build/common/easyLayout.js"></script>
 <script type="text/javascript" src="../../assets/js/common/tools/businessPermissionUtil.js"></script>
 <script type="text/javascript">
+	window.top.__ctx_mb = "http://localhost:8082";//移动端地址 
+	window.top.__ctx_pc_iview = "http://localhost:8081";//iview地址
 	function openEdit(id) {
 		$.openFullWindow("formDefEdit.html?formType="+$.getParam("formType")+"&id=" + (id ? id : ""));
 	}

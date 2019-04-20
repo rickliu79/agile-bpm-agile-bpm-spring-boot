@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Activiti Modeler component part of the Activiti project
  * Copyright 2005-2014 Alfresco Software, Ltd. All rights reserved.
  * 

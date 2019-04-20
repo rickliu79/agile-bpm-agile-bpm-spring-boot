@@ -1,5 +1,4 @@
 window.__ctx = "";
-window.__ctx_mb = "http://localhost:8081";//移动端地址
 
 ////跨域时修改 此 ctx 
 //window.__ctx = "http://localhost:8080/agile-bpm-platform";

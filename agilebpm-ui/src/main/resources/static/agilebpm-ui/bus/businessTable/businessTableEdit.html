@@ -102,7 +102,7 @@
 				<th style="width: 10%">字段控件</th>
 				<th style="width: 15%">控件配置</th>
 				<th style="width: 10%">字段校验</th>
-				<th style="width: 5%">操作</th>
+				<th style="width: 7%">操作</th>
 			</tr>
 			<tr ng-repeat="column in data.columns">
 				<!-- 注释 -->
@@ -190,7 +190,9 @@
 				</td>
 				<!-- 操作 -->
 				<td>
-					<a href="javaScript:void(0)" ng-if="!column.primary" ng-click="ArrayTool.del($index,data.columns)" class="btn btn-sm btn-primary fa-times"></a>
+					<a href="javascript:void(0)" ng-if="!column.primary&&$index!=1" ng-click="ArrayTool.up($index,data.columns)" class="btn btn-sm btn-default fa-chevron-up"></a>
+					<a href="javascript:void(0)" ng-if="!column.primary" ng-click="ArrayTool.down($index,data.columns)" class="btn btn-sm btn-default fa-chevron-down"></a>
+					<a href="javaScript:void(0)" ng-if="!column.primary" ng-click="ArrayTool.del($index,data.columns)" class="btn btn-sm btn-default fa-times"></a>
 					<span ng-if="column.primary" style="color: red">主键字段</span>
 				</td>
 			</tr>

@@ -13,7 +13,8 @@
 		var previewUrlMap = {
 			"pc" : 'formDefPreview.html',
 			"vue" : 'vueFormDefPreview.html',
-			"mobile" : __ctx_mb + '/#/bpm/preview',
+			"mobile" : window.top.__ctx_mb + '/#/bpm/preview',
+			"pc_iview" : window.top.__ctx_pc_iview + '/bpm/form/preview',
 		};
 
 		if (!previewUrlMap[formType]) {

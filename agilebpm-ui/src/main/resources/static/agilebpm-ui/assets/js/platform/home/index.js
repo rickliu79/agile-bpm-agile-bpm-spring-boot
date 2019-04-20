@@ -128,20 +128,20 @@ app.controller("indexCtrl",['$scope','baseService',function(scope,baseService){
 	}
 	
 	scope.changeCurrentSystem = function(systemAlias){
-		var get = baseService.get(__ctx+"/org/userResource/changeSystem?systemAlias="+systemAlias);
+		var get = baseService.get(__ctx+"/userResource/changeSystem?systemAlias="+systemAlias);
 		$.getResultData(get,function(){
 			window.location = "index.html";
 		})
 	}
 	scope.changeCurrentOrg = function(orgId){
-		var get = baseService.get(__ctx+"/org/userResource/changeOrg?orgId="+orgId);
+		var get = baseService.get(__ctx+"/userResource/changeOrg?orgId="+orgId);
 		$.getResultData(get,function(){
 			window.location = "index.html";
 		})
 	}
 	
 	scope.logout = function(systemId){
-		var get = baseService.get(__ctx+"/org/logout");
+		var get = baseService.get(__ctx+"/logout");
 		$.getResultData(get,function(){
 			window.location = "login.html";
 		})
