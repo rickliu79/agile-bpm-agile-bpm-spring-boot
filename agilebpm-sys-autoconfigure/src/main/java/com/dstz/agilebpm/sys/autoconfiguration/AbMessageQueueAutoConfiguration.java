@@ -5,7 +5,9 @@ import com.dstz.sys.api.jms.producer.JmsProducer;
 import com.dstz.sys.simplemq.consumer.CommonMessageQueueConsumer;
 import com.dstz.sys.simplemq.producer.CommonMessageQueueProducer;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
 import org.springframework.jms.listener.adapter.MessageListenerAdapter;
@@ -17,6 +19,8 @@ import javax.jms.ConnectionFactory;
  *
  * @author wacxhs
  */
+@ConditionalOnExpression("'${ab.simple-mq.message-queue-type}'.toLowerCase() == 'jms'")
+@Configuration
 @EnableJms
 public class AbMessageQueueAutoConfiguration {
 

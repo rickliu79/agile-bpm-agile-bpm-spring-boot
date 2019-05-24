@@ -1,4 +1,4 @@
-package com.dstz.agilebpm.sys.autoconfiguration.annotation;
+package com.dstz.agilebpm.sys.autoconfiguration.enums;
 
 /**
  * 消息队列类型
@@ -15,6 +15,10 @@ public enum MessageQueueType {
     /**
      * java消息队列
      */
-    JMS
+    JMS,
 
+    /**
+     * 同步方式
+     */
+    SYNCHRONOUS
 }

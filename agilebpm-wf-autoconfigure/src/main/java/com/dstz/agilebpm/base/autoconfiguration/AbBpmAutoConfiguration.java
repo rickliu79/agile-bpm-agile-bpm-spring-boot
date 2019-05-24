@@ -85,7 +85,7 @@ public class AbBpmAutoConfiguration {
 		processConfiguration.setDataSource(dataSource);
 		processConfiguration.setDatabaseType(dataSourceExtraProperties.getDbType());
 		processConfiguration.setDbIdentityUsed(false);
-		processConfiguration.setHistory("audit");
+		processConfiguration.setHistory("none");
 		processConfiguration.setTransactionManager(transactionManager);
 		processConfiguration.setDatabaseSchemaUpdate("true");
 		processConfiguration.setJobExecutorActivate(false);
