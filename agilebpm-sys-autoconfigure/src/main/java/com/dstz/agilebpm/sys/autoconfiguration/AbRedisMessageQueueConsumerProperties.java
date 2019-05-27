@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  *
  * @author wacxhs
  */
-@ConfigurationProperties(prefix = "ab.redis.mq-consumer")
+@ConfigurationProperties(prefix = "ab.simple-mq.redis-consumer")
 public class AbRedisMessageQueueConsumerProperties {
 
     /**
