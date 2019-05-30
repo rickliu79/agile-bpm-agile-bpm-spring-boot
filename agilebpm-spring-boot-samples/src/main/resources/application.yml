@@ -34,7 +34,7 @@ ab:
   security:
     auth-ingores: /login.*,/agilebpm-ui*,/index.html,/swagger-*,/v2/api-docs*,
   redis:
-    use-redis-cache: true
+    use-redis-cache: false
   mail:
     mail-address: agileBpm@qq.com
     nick-name: AgileBPM
