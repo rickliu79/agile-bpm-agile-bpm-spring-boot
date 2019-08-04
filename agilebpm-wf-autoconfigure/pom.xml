@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.dstz</groupId>
         <artifactId>agilebpm-spring-boot</artifactId>
-        <version>1.2.1</version>
+        <version>1.2.3</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
  
@@ -22,11 +22,11 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
- 
+  
        <dependency>
             <groupId>com.dstz.agilebpm</groupId>
             <artifactId>wf-rest</artifactId>
         </dependency>
-
+        
     </dependencies>
 </project>

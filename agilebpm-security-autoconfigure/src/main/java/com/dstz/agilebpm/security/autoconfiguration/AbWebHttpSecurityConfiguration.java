@@ -1,21 +1,10 @@
 package com.dstz.agilebpm.security.autoconfiguration;
 
-import com.dstz.org.api.context.ICurrentContext;
-import com.dstz.security.authentication.AccessDecisionManagerImpl;
-import com.dstz.security.authentication.FilterInvocationSecurityMetadataSourceImpl;
-import com.dstz.security.authentication.SecurityInterceptor;
-import com.dstz.security.filter.EncodingFilter;
-import com.dstz.security.filter.RefererCsrfFilter;
-import com.dstz.security.filter.RequestThreadFilter;
-import com.dstz.security.filter.XssFilter;
-import com.dstz.security.forbidden.DefaultAccessDeniedHandler;
-import com.dstz.security.forbidden.DefualtAuthenticationEntryPoint;
-import com.dstz.security.jwt.service.JWTService;
-import com.dstz.security.login.CustomPwdEncoder;
-import com.dstz.security.login.UserDetailsServiceImpl;
-import com.dstz.security.login.context.LoginContext;
-import com.dstz.security.login.logout.DefualtLogoutSuccessHandler;
-import com.dstz.sys.util.ContextUtil;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -33,11 +22,22 @@ import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
+import com.dstz.base.core.jwt.JWTService;
+import com.dstz.org.api.context.ICurrentContext;
+import com.dstz.security.authentication.AccessDecisionManagerImpl;
+import com.dstz.security.authentication.FilterInvocationSecurityMetadataSourceImpl;
+import com.dstz.security.authentication.SecurityInterceptor;
+import com.dstz.security.filter.EncodingFilter;
+import com.dstz.security.filter.RefererCsrfFilter;
+import com.dstz.security.filter.RequestThreadFilter;
+import com.dstz.security.filter.XssFilter;
+import com.dstz.security.forbidden.DefaultAccessDeniedHandler;
+import com.dstz.security.forbidden.DefualtAuthenticationEntryPoint;
+import com.dstz.security.login.CustomPwdEncoder;
+import com.dstz.security.login.UserDetailsServiceImpl;
+import com.dstz.security.login.context.LoginContext;
+import com.dstz.security.login.logout.DefualtLogoutSuccessHandler;
+import com.dstz.sys.util.ContextUtil;
 
 /**
  * 鉴权配置

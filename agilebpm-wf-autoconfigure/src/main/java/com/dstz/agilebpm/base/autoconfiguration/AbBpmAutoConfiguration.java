@@ -88,7 +88,7 @@ public class AbBpmAutoConfiguration {
 		processConfiguration.setHistory("none");
 		processConfiguration.setTransactionManager(transactionManager);
 		processConfiguration.setDatabaseSchemaUpdate("true");
-		processConfiguration.setJobExecutorActivate(false);
+		processConfiguration.setJobExecutorActivate(true);
 		processConfiguration.setIdGenerator(activitiIdGenerator());
 		processConfiguration.setProcessDefinitionCache(activitiDefCache);
 		
@@ -113,6 +113,12 @@ public class AbBpmAutoConfiguration {
 		map.put("ACTIVITY_COMPLETED", "activityComplatedListener");
 		
 		map.put("SEQUENCEFLOW_TAKEN", "sequenceFlowTakenListener");
+		
+		map.put("ACTIVITY_CANCELLED", "activitiCancelledListener");
+
+		map.put("TIMER_FIRED", "automaticTaskListener");
+		map.put("JOB_EXECUTION_SUCCESS", "jobExecutedListener");
+		map.put("JOB_EXECUTION_FAILURE", "jobExecutedListener");
 		
 		globalEventListener.setHandlers(map);
 		

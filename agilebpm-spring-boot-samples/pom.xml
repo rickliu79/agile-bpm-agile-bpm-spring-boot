@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.dstz</groupId>
         <artifactId>agilebpm-spring-boot</artifactId>
-        <version>1.2.1</version>
+        <version>1.2.3</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -78,7 +78,13 @@
         <dependency>
             <groupId>com.dstz</groupId>
             <artifactId>agilebpm-ui</artifactId>
-            <version>1.2.1</version>
+            <version>1.2.3</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.dstz.demo</groupId>
+            <artifactId>demo-core</artifactId>
+            <version>0.0.1</version>
         </dependency>
 
         <dependency>
@@ -95,6 +101,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-activemq</artifactId>
         </dependency>
+        
+        <dependency>
+		  <groupId>com.microsoft.sqlserver</groupId>
+		  <artifactId>mssql-jdbc</artifactId>
+		  <version>6.4.0.jre8</version>
+		</dependency>
 
     </dependencies>
 

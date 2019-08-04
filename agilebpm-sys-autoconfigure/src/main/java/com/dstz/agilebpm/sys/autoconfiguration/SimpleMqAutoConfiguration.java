@@ -1,5 +1,9 @@
 package com.dstz.agilebpm.sys.autoconfiguration;
 
+import cn.hutool.extra.mail.MailAccount;
+import com.dstz.sys.api.jms.producer.JmsProducer;
+import com.dstz.sys.simplemq.producer.SynchronousQueueProducer;
+import com.dstz.sys.util.EmailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -8,12 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-
-import com.dstz.sys.api.jms.producer.JmsProducer;
-import com.dstz.sys.simplemq.producer.SynchronousQueueProducer;
-import com.dstz.sys.util.EmailUtil;
-
-import cn.hutool.extra.mail.MailAccount;
 
 /**
  * 缓存相关配置

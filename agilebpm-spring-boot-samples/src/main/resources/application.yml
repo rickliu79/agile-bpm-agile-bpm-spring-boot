@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.106.140.247:3306/new_?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://47.106.140.247:3306/angular?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
     username: public
     password: public
     dbType: mysql
@@ -19,7 +19,7 @@ spring:
 
 logging:
   level:
-    root: INFO
+    root: DEBUG
 server:
   servlet:
     context-path: /
@@ -33,6 +33,7 @@ ab:
     enabled: false
   security:
     auth-ingores: /login.*,/agilebpm-ui*,/index.html,/swagger-*,/v2/api-docs*,
+    csrf-ingores: a.feg.cn,127.0.0.1,localhost
   redis:
     use-redis-cache: false
   mail:
