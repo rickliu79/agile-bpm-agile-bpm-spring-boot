@@ -5,27 +5,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.dstz</groupId>
-	<artifactId>agilebpm-spring-boot</artifactId>
+	<artifactId>agilebpm-spring-boot-parent</artifactId>
 	<version>1.2.3</version>
 	<modules>
-		<module>agilebpm-base-autoconfigure</module>
-		<module>agilebpm-base-starter</module>
-
-		<module>agilebpm-sys-autoconfigure</module>
-		<module>agilebpm-sys-starter</module>
-
-		<module>agilebpm-security-autoconfigure</module>
-		<module>agilebpm-security-starter</module>
-
-		<module>agilebpm-wf-autoconfigure</module>
-		<module>agilebpm-wf-starter</module>
-		
-		<module>agilebpm-ui</module>
-		<module>agilebpm-spring-boot-samples</module>
+		<!--  案例 APP工程 -->
+		<module>agilebpm-app-simples</module>
+		<!--  案例 代码模块 -->
+		<module>demo</module>
 	</modules>
 	<packaging>pom</packaging>
 
-	<name>agilebpm-starter</name>
+	<name>agilebpm-springboot-simples-project</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -43,25 +33,26 @@
 		<ab.base.version>1.3.7</ab.base.version>
 		<ab.platform.version>1.3.7</ab.platform.version>
 		<ab.busform.version>1.3.7</ab.busform.version>
+		<ab.staters.version>1.2.3</ab.staters.version>
 	</properties>
 
 	 <!-- deploy 服务器 -->
     <distributionManagement>
          <repository>
             <id>nexus-agile-bpm</id>
-            <url>http://47.106.140.247:8081/nexus/content/repositories/releases/</url>
+            <url>http://nexus.agilebpm.cn/nexus/content/repositories/releases/</url>
         </repository>
 
         <snapshotRepository>
             <id>nexus-agile-bpm</id>
-            <url>http://47.106.140.247:8081/nexus/content/repositories/snapshots/</url>
+            <url>http://nexus.agilebpm.cn/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
     <repositories>
         <repository>
             <id>nexus-agile-bpm</id>
-            <url>http://47.106.140.247:8081/nexus/content/groups/public/</url>
+            <url>http://nexus.agilebpm.cn/nexus/content/groups/public/</url>
         </repository>
     </repositories>
 
@@ -111,25 +102,31 @@
 			<dependency>
 				<groupId>com.dstz</groupId>
 				<artifactId>agilebpm-base-starter</artifactId>
-				<version>${project.version}</version>
+				<version>${ab.staters.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.dstz</groupId>
 				<artifactId>agilebpm-security-starter</artifactId>
-				<version>${project.version}</version>
+				<version>${ab.staters.version}</version>
 			</dependency>
 			
 			<dependency>
 				<groupId>com.dstz</groupId>
 				<artifactId>agilebpm-sys-starter</artifactId>
-				<version>${project.version}</version>
+				<version>${ab.staters.version}</version>
 			</dependency>
+			
+			 <dependency>
+	            <groupId>com.dstz</groupId>
+	            <artifactId>agilebpm-ui</artifactId>
+	            <version>${ab.staters.version}</version>
+	        </dependency>
 			
 			<dependency>
 				<groupId>com.dstz</groupId>
 				<artifactId>agilebpm-wf-starter</artifactId>
-				<version>${project.version}</version>
+				<version>${ab.staters.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
