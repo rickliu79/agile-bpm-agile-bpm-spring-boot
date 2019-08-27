@@ -75,7 +75,13 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.6.1</version>
         </dependency>
-
+		<!-- DEMO 模块的前端资源，如果您觉得没有必要可以直接使用 agilebpm-ui jar -->
+        <dependency>
+            <groupId>com.dstz</groupId>
+            <artifactId>demo-project-ui</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        
         <dependency>
             <groupId>com.dstz</groupId>
             <artifactId>agilebpm-ui</artifactId>
