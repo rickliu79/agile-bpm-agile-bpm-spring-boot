@@ -4,7 +4,7 @@
 
 本项目 为  AgileBPM 的SpringBoot 案例工程
 
-AgileBPM 主工程 ：https://gitee.com/agile-bpm/agile-bpm-basic，源码都在该工程中！
+AgileBPM 主工程 ：https://gitee.com/agile-bpm/agile-bpm-basic     ，源码都在该工程中！
 
 该项目含一下模块
 
